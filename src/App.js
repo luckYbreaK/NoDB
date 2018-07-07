@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 // components
 import SelectDisplay from "./components/SelectDisplay";
+import Button from "./components/Button";
 
 // CSS
 import './App.css';
@@ -94,6 +95,7 @@ class App extends Component {
               description={this.state.ride}
               handleSelect={this.handleAttractionSelect}
               />
+              <Button name="Add To Activities"/>
             </div>
             <div>
               <SelectDisplay 
@@ -102,10 +104,14 @@ class App extends Component {
               description={this.state.restaurant}
               handleSelect={this.handleDiningSelect}
               />
+              <Button name="Add To Activities"/>
             </div>  
           </section>
           <section>
             {/* Contains heading, activities list, notes, and addnote,editnote, remove activity buttons */}
+            <Button name="Add Note"/>
+            <Button name="Edit Note"/>
+            <Button name="Remove Activity"/>
           </section>
         </main>
       </div>
