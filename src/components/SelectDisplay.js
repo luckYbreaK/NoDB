@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 class SelectDisplay extends Component {
     render() {
-        console.log(this.props.optionName[0]);
         let value = this.props.optionName[0];
         
         let options = this.props.optionName.map((optionName, i) => {
