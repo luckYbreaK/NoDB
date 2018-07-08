@@ -18,21 +18,21 @@ class App extends Component {
       attractions: [],
       //array of objects
       dining: [],
-      ride: " ",
+      ride: "astro-orbiter",
       displayRide: " ",
-      restaurant: " ",
+      restaurant: "be-our-guest",
       displayRestaurant: " ",
-      //array of objects
-      todo_attractions: [],
-      //array of objects
-      todo_dining: []
+      // //array of objects
+      // todo_attractions: [],
+      // //array of objects
+      // todo_dining: []
     };
 
     this.handleAttractionSelect = this.handleAttractionSelect.bind(this);
     this.handleDiningSelect = this.handleDiningSelect.bind(this);
-    this.handleAddRideClick = this.handleAddRideClick.bind(this);
-    this.handleAddRestaurantClick = this.handleAddRestaurantClick.bind(this);
-    this.handleRemoveClick = this.handleRemoveClick.bind(this);
+    // this.handleAddRideClick = this.handleAddRideClick.bind(this);
+    // this.handleAddRestaurantClick = this.handleAddRestaurantClick.bind(this);
+    // this.handleRemoveClick = this.handleRemoveClick.bind(this);
     this.handleAddNoteClick = this.handleAddNoteClick.bind(this);
     this.handleEditNoteClick = this.handleEditNoteClick.bind(this);
   }
@@ -104,43 +104,35 @@ class App extends Component {
 
   /* handler for the button element in the Button component; utilizes the state.ride property to 
   extract the attraction name from the state.attractions array of objects*/
-  handleAddRideClick() {
-    let { name } = this.state.attractions
-      .filter(attraction => {
-        return attraction.permalink === this.state.ride
-      })[0];
-    // let arr = [...this.state.todo_attractions, name]
-    // this.setState({
-    //   todo_attractions: arr
-    // });
-    axios.post("/api/attractions", {name: name}).then( (res) => {
-      this.setState({
-        todo_attractions : res.data
-      })
-    });
-  }
+  // handleAddRideClick() {
+  //   let { name } = this.state.attractions
+  //     .filter(attraction => {
+  //       return attraction.permalink === this.state.ride
+  //     })[0];
+  //   axios.post("/api/attractions", { name: name }).then((res) => {
+  //     this.setState({
+  //       todo_attractions: res.data
+  //     })
+  //   });
+  // }
 
   /* handler for the button element in the Button component;*/
-  handleAddRestaurantClick() {
-    let { name } = this.state.dining
-      .filter(restaurant => {
-        return restaurant.permalink === this.state.restaurant
-      })[0];
-    // let arr = [...this.state.todo_dining, name]
-    // this.setState({
-    //   todo_dining: arr
-    // });
-    axios.post("/api/dining", {name: name}).then( (res) => {
-      this.setState({
-        todo_dining : res.data
-      })
-    });
-  }
+  // handleAddRestaurantClick() {
+  //   let { name } = this.state.dining
+  //     .filter(restaurant => {
+  //       return restaurant.permalink === this.state.restaurant
+  //     })[0];
+  //   axios.post("/api/dining", { name: name }).then((res) => {
+  //     this.setState({
+  //       todo_dining: res.data
+  //     })
+  //   });
+  // }
 
   /* handler for the button element in the Button component;*/
-  handleRemoveClick() {
+  // handleRemoveClick() {
 
-  }
+  // }
 
   /* handler for the button element in the Button component;*/
   handleAddNoteClick() {
@@ -153,67 +145,86 @@ class App extends Component {
   }
 
   render() {
-    console.log("Attractions: ",this.state.todo_attractions);
-    console.log("Dining: ",this.state.todo_dining);
-
+    // console.log("Attractions Array: ",this.state.attractions);
+    // console.log("Ride: ",this.state.ride);
     
+    
+    let attractionName = this.state.attractions
+        .filter(attraction => {
+          return attraction.permalink === this.state.ride
+        })[0];
+
+    let diningName = this.state.dining
+        .filter(restaurant => {
+          return restaurant.permalink === this.state.restaurant
+        })[0];
+
     return (
       <div>
         <main>
           <section>
             {/* Contains dropdown menus, descriptions, and addbutton  */}
             <div>
-              <Heading title="Attractions"/>
+              <Heading title="Attractions" />
               <SelectDisplay
                 name="Attractions"
                 optionName={this.state.attractions}
                 description={this.state.displayRide}
                 handleSelect={this.handleAttractionSelect}
               />
-              <Button
+              {/* <Button
                 name="Add To Activities"
                 handleClick={this.handleAddRideClick}
-              />
+              /> */}
             </div>
             <div>
-              <Heading title="Dining Options"/>
+              <Heading title="Dining Options" />
               <SelectDisplay
                 name="Dining Options"
                 optionName={this.state.dining}
                 description={this.state.displayRestaurant}
                 handleSelect={this.handleDiningSelect}
               />
-              <Button
+              {/* <Button
                 name="Add To Dining"
                 handleClick={this.handleAddRestaurantClick}
-              />
+              /> */}
             </div>
           </section>
           <section>
             {/* Contains heading, activities list, notes, and addnote,editnote, remove activity buttons */}
+            <div>
+              <Heading title="Activities To Do!" />
+            </div>
+            <List
+              title="Attractions:"
+              addButtonName="Add Attraction To Activities"
+              deleteButtonName="Remove Attraction"
+              activityName={attractionName} 
+            // array={this.state.todo_attractions}
+            />
+            <List
+              title="Dining:"
+              addButtonName="Add Restaurant To Dining"
+              deleteButtonName="Remove Restaurant"
+              activityName={diningName}
+            // array={this.state.todo_dining}
+            />
+            <div>
+              <Button
+                name="Add Note"
+                handleClick={this.handleAddNoteClick}
+              />
+              <Button
+                name="Edit Note"
+                handleClick={this.handleEditNoteClick}
+              />
+            </div>
 
-            <Heading title="Activities To Do!"/>
-            <List 
-            title="Attractions:"
-            activityName={}
-            array={this.state.todo_attractions}
-            />
-            <List 
-            title="Dining:"
-            array={this.state.todo_dining}
-            />
-            <Button
-              name="Add Note"
-              handleClick={this.handleAddNoteClick}
-            />
-            <Button
-              name="Edit Note"
-              handleClick={this.handleEditNoteClick}
-            />
-            <Button
+            {/* <Button
               name="Remove Activity"
               handleClick={this.handleRemoveClick}
-            />
+            /> */}
           </section>
         </main>
       </div>

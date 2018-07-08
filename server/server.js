@@ -17,7 +17,8 @@ app.get("/api/restaurant/:description", disneyCtrl.readRestaurant);
 app.post("/api/attractions", disneyCtrl.createTodoAttractions);
 app.post("/api/dining", disneyCtrl.createTodoDining);
 // app.put();
-// app.delete();
+app.delete("/api/attractions/:id", disneyCtrl.deleteRide);
+app.delete("/api/dining/:id", disneyCtrl.deleteRestaurant);
 // === ENDPOINTS ===
 
 app.listen(process.env.SERVER_PORT, () => {

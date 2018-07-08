@@ -52,5 +52,17 @@ module.exports = {
         }
         todo_dining.push(restaurant);
         res.status(200).send(todo_dining)
+    },
+    deleteRide : (req, res) => {
+        todo_attractions.forEach( (obj, i) => {
+            if(obj.id === parseInt(req.params.id)) todo_attractions.splice(i, 1)
+        });
+        res.status(200).send(todo_attractions);
+    },
+    deleteRestaurant : (req, res) => {
+        todo_dining.forEach( (obj, i) => {
+            if(obj.id === parseInt(req.params.id)) todo_dining.splice(i, 1)
+        });
+        res.status(200).send(todo_dining);
     }
 }
