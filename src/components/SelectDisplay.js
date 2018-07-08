@@ -17,7 +17,6 @@ class SelectDisplay extends Component {
         });
         return (
             <div>
-                <h2>{this.props.name}</h2>
                 <select
                     defaultValue={value}
                     onChange={(e) => this.props.handleSelect(e.target.value)}>

@@ -1,5 +1,12 @@
 const axios = require("axios");
 
+//array of objects
+let todo_attractions = [];
+let ride_id = 0;
+//array of objects
+let todo_dining = [];
+let restaurant_id = 0;
+
 
 module.exports = {
     readAttractions : (req, res) => {
@@ -25,5 +32,25 @@ module.exports = {
         promise.then( result => {
             res.status(200).send(result.data);
         });
+    },
+    createTodoAttractions : (req, res) => {
+        let { name } = req.body;
+        //Create an object with a unique id and the attraction name
+        let ride = {
+            id: ride_id++,
+            name: name
+        }
+        todo_attractions.push(ride);
+        res.status(200).send(todo_attractions)
+    },
+    createTodoDining : (req, res) => {
+        let { name } = req.body;
+        //Create an object with a unique id and the restaurant name
+        let restaurant = {
+            id: restaurant_id++,
+            name: name
+        }
+        todo_dining.push(restaurant);
+        res.status(200).send(todo_dining)
     }
 }

@@ -4,6 +4,8 @@ import axios from 'axios';
 // components
 import SelectDisplay from "./components/SelectDisplay";
 import Button from "./components/Button";
+import Heading from "./components/Heading";
+import List from "./components/List";
 // CSS
 import './App.css';
 
@@ -20,9 +22,9 @@ class App extends Component {
       displayRide: " ",
       restaurant: " ",
       displayRestaurant: " ",
-      //array of strings
+      //array of objects
       todo_attractions: [],
-      //array of strings
+      //array of objects
       todo_dining: []
     };
 
@@ -107,9 +109,14 @@ class App extends Component {
       .filter(attraction => {
         return attraction.permalink === this.state.ride
       })[0];
-    let arr = [...this.state.todo_attractions, name]
-    this.setState({
-      todo_attractions: arr
+    // let arr = [...this.state.todo_attractions, name]
+    // this.setState({
+    //   todo_attractions: arr
+    // });
+    axios.post("/api/attractions", {name: name}).then( (res) => {
+      this.setState({
+        todo_attractions : res.data
+      })
     });
   }
 
@@ -119,9 +126,14 @@ class App extends Component {
       .filter(restaurant => {
         return restaurant.permalink === this.state.restaurant
       })[0];
-    let arr = [...this.state.todo_dining, name]
-    this.setState({
-      todo_dining: arr
+    // let arr = [...this.state.todo_dining, name]
+    // this.setState({
+    //   todo_dining: arr
+    // });
+    axios.post("/api/dining", {name: name}).then( (res) => {
+      this.setState({
+        todo_dining : res.data
+      })
     });
   }
 
@@ -143,6 +155,7 @@ class App extends Component {
   render() {
     console.log("Attractions: ",this.state.todo_attractions);
     console.log("Dining: ",this.state.todo_dining);
+
     
     return (
       <div>
@@ -150,6 +163,7 @@ class App extends Component {
           <section>
             {/* Contains dropdown menus, descriptions, and addbutton  */}
             <div>
+              <Heading title="Attractions"/>
               <SelectDisplay
                 name="Attractions"
                 optionName={this.state.attractions}
@@ -162,6 +176,7 @@ class App extends Component {
               />
             </div>
             <div>
+              <Heading title="Dining Options"/>
               <SelectDisplay
                 name="Dining Options"
                 optionName={this.state.dining}
@@ -169,13 +184,24 @@ class App extends Component {
                 handleSelect={this.handleDiningSelect}
               />
               <Button
-                name="Add To Activities"
+                name="Add To Dining"
                 handleClick={this.handleAddRestaurantClick}
               />
             </div>
           </section>
           <section>
             {/* Contains heading, activities list, notes, and addnote,editnote, remove activity buttons */}
+
+            <Heading title="Activities To Do!"/>
+            <List 
+            title="Attractions:"
+            activityName={}
+            array={this.state.todo_attractions}
+            />
+            <List 
+            title="Dining:"
+            array={this.state.todo_dining}
+            />
             <Button
               name="Add Note"
               handleClick={this.handleAddNoteClick}
