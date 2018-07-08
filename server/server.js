@@ -16,7 +16,8 @@ app.get("/api/dining", disneyCtrl.readDining);
 app.get("/api/restaurant/:description", disneyCtrl.readRestaurant);
 app.post("/api/attractions", disneyCtrl.createTodoAttractions);
 app.post("/api/dining", disneyCtrl.createTodoDining);
-// app.put();
+app.post("/api/notes", disneyCtrl.creatNote);
+app.put("/api/notes/:id",disneyCtrl.updateNote);
 app.delete("/api/attractions/:id", disneyCtrl.deleteRide);
 app.delete("/api/dining/:id", disneyCtrl.deleteRestaurant);
 // === ENDPOINTS ===

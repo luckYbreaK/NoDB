@@ -69,7 +69,7 @@ class List extends Component {
     handleRemoveRestaurantClick() {
         let id = this.state.selectedRestaurantOption
 
-        axios.delete(`/api/diningrs/${id}`).then( res => {
+        axios.delete(`/api/dining/${id}`).then( res => {
             this.setState({
                 todo_dining: res.data
             });

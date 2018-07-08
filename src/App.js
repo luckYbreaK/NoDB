@@ -3,9 +3,10 @@ import React, { Component } from 'react';
 import axios from 'axios';
 // components
 import SelectDisplay from "./components/SelectDisplay";
-import Button from "./components/Button";
+// import Button from "./components/Button";
 import Heading from "./components/Heading";
 import List from "./components/List";
+import Note from "./components/Note";
 // CSS
 import './App.css';
 
@@ -33,8 +34,8 @@ class App extends Component {
     // this.handleAddRideClick = this.handleAddRideClick.bind(this);
     // this.handleAddRestaurantClick = this.handleAddRestaurantClick.bind(this);
     // this.handleRemoveClick = this.handleRemoveClick.bind(this);
-    this.handleAddNoteClick = this.handleAddNoteClick.bind(this);
-    this.handleEditNoteClick = this.handleEditNoteClick.bind(this);
+    // this.handleAddNoteClick = this.handleAddNoteClick.bind(this);
+    // this.handleEditNoteClick = this.handleEditNoteClick.bind(this);
   }
 
   /* external API requests to TouringPlans.com; the requests are for attraction and dining info at the
@@ -134,30 +135,22 @@ class App extends Component {
 
   // }
 
-  /* handler for the button element in the Button component;*/
-  handleAddNoteClick() {
 
-  }
-
-  /* handler for the button element in the Button component;*/
-  handleEditNoteClick() {
-
-  }
 
   render() {
     // console.log("Attractions Array: ",this.state.attractions);
     // console.log("Ride: ",this.state.ride);
-    
-    
+
+
     let attractionName = this.state.attractions
-        .filter(attraction => {
-          return attraction.permalink === this.state.ride
-        })[0];
+      .filter(attraction => {
+        return attraction.permalink === this.state.ride
+      })[0];
 
     let diningName = this.state.dining
-        .filter(restaurant => {
-          return restaurant.permalink === this.state.restaurant
-        })[0];
+      .filter(restaurant => {
+        return restaurant.permalink === this.state.restaurant
+      })[0];
 
     return (
       <div>
@@ -200,7 +193,7 @@ class App extends Component {
               title="Attractions:"
               addButtonName="Add Attraction To Activities"
               deleteButtonName="Remove Attraction"
-              activityName={attractionName} 
+              activityName={attractionName}
             // array={this.state.todo_attractions}
             />
             <List
@@ -210,17 +203,7 @@ class App extends Component {
               activityName={diningName}
             // array={this.state.todo_dining}
             />
-            <div>
-              <Button
-                name="Add Note"
-                handleClick={this.handleAddNoteClick}
-              />
-              <Button
-                name="Edit Note"
-                handleClick={this.handleEditNoteClick}
-              />
-            </div>
-
+              <Note />
             {/* <Button
               name="Remove Activity"
               handleClick={this.handleRemoveClick}
