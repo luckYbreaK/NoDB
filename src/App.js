@@ -98,7 +98,7 @@ class App extends Component {
     }, () => {
       axios.get(`/api/restaurant/${this.state.restaurant}`).then(res => {
         this.setState({
-          displayRestaurant: `Cuisine: ${res.data.cuisine}, House Specialties: ${res.data.house_specialties}`
+          displayRestaurant: <div>Cuisine: {res.data.cuisine}<br />House Specialties: {res.data.house_specialties}</div>
         })
       })
     })
@@ -156,9 +156,9 @@ class App extends Component {
     return (
       <div>
         <main>
-          <section>
+          <section className="attraction_container">
             {/* Contains dropdown menus, descriptions, and addbutton  */}
-            <div className="select_display_container">
+            <div className="select_container">
               <Heading title="Attractions" />
               <SelectDisplay
                 name="Attractions"
@@ -167,22 +167,17 @@ class App extends Component {
                 handleSelect={this.handleAttractionSelect}
               />
             </div>
-            {/* <div>
-              <Heading title="Activities To Do!" />
-            </div> */}
             <List
               title="Attractions:"
               addButtonName="Add Attraction To Activities"
-              deleteButtonName="Remove Attraction"
+              deleteButtonName="Remove Selected Attraction"
               activityName={attractionName}
             // array={this.state.todo_attractions}
             />
-
-
           </section>
-          <section>
+          <section className="dining_container">
             {/* Contains heading, activities list, notes, and addnote,editnote, remove activity buttons */}
-            <div className="select_display_container">
+            <div className="select_container">
               <Heading title="Dining Options" />
               <SelectDisplay
                 name="Dining Options"
@@ -195,18 +190,19 @@ class App extends Component {
               <List
                 title="Dining:"
                 addButtonName="Add Restaurant To Dining"
-                deleteButtonName="Remove Restaurant"
+                deleteButtonName="Remove Selected Restaurant"
                 activityName={diningName}
               // array={this.state.todo_dining}
               />
             </div>
           </section>
-          <section>
+          <section className="note_container">
             <div>
-              <Note className="list_display_container" />
+              <img src="https://yt3.ggpht.com/a-/ACSszfHZmd96lhbDCGocqrcTgYZ4KmeDGQ5korwfdQ=s900-mo-c-c0xffffffff-rj-k-no" alt="mickey mouse" />
             </div>
+            <Note />
           </section>
-          <section>
+          <section className="quote_container">
             <Quote />
           </section>
         </main>

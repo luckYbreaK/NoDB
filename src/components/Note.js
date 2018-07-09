@@ -83,7 +83,7 @@ class Note extends Component {
             </form>
         });
         return (
-            <div>
+            <div style={{backgroundColor: "black", color: "white"}}>
                 <div>
                     <Heading title="Notes:" />
                     {displayNote}
@@ -94,7 +94,7 @@ class Note extends Component {
                         handleClick={this.handleAddNoteClick}
                     />
                     <Button
-                        name="Edit Note"
+                        name="Edit Selected Note"
                         handleClick={this.handleEditNoteClick}
                     />
                 </div>

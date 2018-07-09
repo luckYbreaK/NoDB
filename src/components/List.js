@@ -59,7 +59,7 @@ class List extends Component {
     handleRemoveRideClick() {
         let id = this.state.selectedRideOption
 
-        axios.delete(`/api/attractions/${id}`).then( res => {
+        axios.delete(`/api/attractions/${id}`).then(res => {
             this.setState({
                 todo_attractions: res.data
             });
@@ -69,7 +69,7 @@ class List extends Component {
     handleRemoveRestaurantClick() {
         let id = this.state.selectedRestaurantOption
 
-        axios.delete(`/api/dining/${id}`).then( res => {
+        axios.delete(`/api/dining/${id}`).then(res => {
             this.setState({
                 todo_dining: res.data
             });
@@ -93,7 +93,7 @@ class List extends Component {
     render() {
         // console.log("Ride",this.state.selectedRideOption);
         // console.log("Restaurant",this.state.selectedRestaurantOption);
-        
+
 
         let arr = this.props.title === "Attractions:" ?
             [...this.state.todo_attractions] : [...this.state.todo_dining];
@@ -128,9 +128,13 @@ class List extends Component {
                             this.handleRemoveRideClick : this.handleRemoveRestaurantClick}
                     />
                 </div>
-                <div>
-                    <Heading title={this.props.title} />
-                    {displayArr}
+                <div className="todo_container">
+                    <div className="center">
+                        <Heading title={this.props.title} />
+                    </div>
+                    <div>
+                        {displayArr}
+                    </div>
                 </div>
             </div>
 

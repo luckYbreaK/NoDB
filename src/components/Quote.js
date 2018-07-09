@@ -9,8 +9,8 @@ class Quote extends Component {
         super();
 
         this.state = {
-            quote : "",
-            input : ""
+            quote: "",
+            input: ""
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -19,31 +19,29 @@ class Quote extends Component {
 
     handleChange(val) {
         this.setState({
-            input : val
+            input: val
         });
     }
 
     handleClick() {
-        axios.get(`/api/quote?movie=${this.state.input}`).then( res => {
-            console.log(res.data);
-            
+        axios.get(`/api/quote?movie=${this.state.input}`).then(res => {
             this.setState({
-                quote : `Quote: "${res.data}"`
+                quote: `Quote: "${res.data}"`
             });
         });
     }
 
     render() {
-        return(
-            <div>
-                <Heading title="Type in the name of your favorite Disney movie to find a quote"/>
-                <input 
-                type="text"
-                onChange={ (e) => this.handleChange(e.target.value)}
+        return (
+            <div className="center_container">
+                <Heading title="Type in the name of your favorite Disney movie to find a quote" />
+                <input
+                    type="text"
+                    onChange={(e) => this.handleChange(e.target.value)}
                 />
-                <Button 
-                name="Search"
-                handleClick={this.handleClick}
+                <Button
+                    name="Get Quote"
+                    handleClick={this.handleClick}
                 />
                 <p>{this.state.quote}</p>
             </div>
