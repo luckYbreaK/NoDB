@@ -115,8 +115,8 @@ class List extends Component {
         });
 
         return (
-            <div>
-                <div>
+            <div className="list_container">
+                <div className="button_container">
                     <Button
                         name={this.props.addButtonName}
                         handleClick={this.props.title === "Attractions:" ?

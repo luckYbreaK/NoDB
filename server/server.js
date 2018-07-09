@@ -14,6 +14,7 @@ app.get("/api/attractions", disneyCtrl.readAttractions);
 app.get("/api/ride/:description", disneyCtrl.readRide);
 app.get("/api/dining", disneyCtrl.readDining);
 app.get("/api/restaurant/:description", disneyCtrl.readRestaurant);
+app.get("/api/quote", disneyCtrl.readQuery);
 app.post("/api/attractions", disneyCtrl.createTodoAttractions);
 app.post("/api/dining", disneyCtrl.createTodoDining);
 app.post("/api/notes", disneyCtrl.creatNote);

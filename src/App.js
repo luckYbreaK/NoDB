@@ -7,6 +7,7 @@ import SelectDisplay from "./components/SelectDisplay";
 import Heading from "./components/Heading";
 import List from "./components/List";
 import Note from "./components/Note";
+import Quote from "./components/Quote";
 // CSS
 import './App.css';
 
@@ -157,7 +158,7 @@ class App extends Component {
         <main>
           <section>
             {/* Contains dropdown menus, descriptions, and addbutton  */}
-            <div>
+            <div className="select_display_container">
               <Heading title="Attractions" />
               <SelectDisplay
                 name="Attractions"
@@ -165,30 +166,10 @@ class App extends Component {
                 description={this.state.displayRide}
                 handleSelect={this.handleAttractionSelect}
               />
-              {/* <Button
-                name="Add To Activities"
-                handleClick={this.handleAddRideClick}
-              /> */}
             </div>
-            <div>
-              <Heading title="Dining Options" />
-              <SelectDisplay
-                name="Dining Options"
-                optionName={this.state.dining}
-                description={this.state.displayRestaurant}
-                handleSelect={this.handleDiningSelect}
-              />
-              {/* <Button
-                name="Add To Dining"
-                handleClick={this.handleAddRestaurantClick}
-              /> */}
-            </div>
-          </section>
-          <section>
-            {/* Contains heading, activities list, notes, and addnote,editnote, remove activity buttons */}
-            <div>
+            {/* <div>
               <Heading title="Activities To Do!" />
-            </div>
+            </div> */}
             <List
               title="Attractions:"
               addButtonName="Add Attraction To Activities"
@@ -196,18 +177,37 @@ class App extends Component {
               activityName={attractionName}
             // array={this.state.todo_attractions}
             />
-            <List
-              title="Dining:"
-              addButtonName="Add Restaurant To Dining"
-              deleteButtonName="Remove Restaurant"
-              activityName={diningName}
-            // array={this.state.todo_dining}
-            />
-              <Note />
-            {/* <Button
-              name="Remove Activity"
-              handleClick={this.handleRemoveClick}
-            /> */}
+
+
+          </section>
+          <section>
+            {/* Contains heading, activities list, notes, and addnote,editnote, remove activity buttons */}
+            <div className="select_display_container">
+              <Heading title="Dining Options" />
+              <SelectDisplay
+                name="Dining Options"
+                optionName={this.state.dining}
+                description={this.state.displayRestaurant}
+                handleSelect={this.handleDiningSelect}
+              />
+            </div>
+            <div>
+              <List
+                title="Dining:"
+                addButtonName="Add Restaurant To Dining"
+                deleteButtonName="Remove Restaurant"
+                activityName={diningName}
+              // array={this.state.todo_dining}
+              />
+            </div>
+          </section>
+          <section>
+            <div>
+              <Note className="list_display_container" />
+            </div>
+          </section>
+          <section>
+            <Quote />
           </section>
         </main>
       </div>
