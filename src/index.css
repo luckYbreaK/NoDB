@@ -3,7 +3,7 @@
 body {
   background: #090100; 
   margin: 0;
-  padding: 80px 0;
+  padding: 10px 0;
   font-family: "Chela One"
 }
 
@@ -17,17 +17,18 @@ main {
 }
 
 .attraction_container {
-  width: 40%;
+  width: 60%;
   height: 40%;
   background: #e8122e;
   display: flex;
+  flex-wrap: wrap;
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
   padding: 20px 20px 0px 20px;
 }
 
 .dining_container {
-  width: 40%;
+  width:60%;
   height: 40%;
   background: #e8122e;
   display: flex;
@@ -35,8 +36,8 @@ main {
 }
 
 .select_container {
-  width: 300px;
-  height: 280px;
+  width: 40%;
+  height: 100%;
   background: #feca1f;
   display: flex;
   flex-direction: column;
@@ -51,8 +52,8 @@ main {
 }
 
 .list_container {
-  width: 400px;
-  height: 280px;
+  width: 60%;
+  height: 100%;
   display: flex;
   justify-content: space-between;
 
@@ -73,7 +74,7 @@ main {
 }
 
 .note_container {
-  width: 40%;
+  width: 60%;
   height: 30%;
   background: #e8122e;
   display: flex;
@@ -83,8 +84,8 @@ main {
 }
 
 .quote_container {
-  width: 40%;
-  height: 10%;
+  width: 60%;
+  height: 15%;
   background: #feca1f;
   display: flex;
   justify-content: center;
@@ -119,4 +120,8 @@ option {
 img {
   width: 100px;
   height: 100px;
+}
+
+select {
+  width: 100%;
 }

@@ -15,6 +15,7 @@ class SelectDisplay extends Component {
             <div>
                 <select
                     onChange={(e) => this.props.handleSelect(e.target.value)}
+                    
                 >
                     {options}
                 </select>

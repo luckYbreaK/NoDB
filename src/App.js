@@ -24,19 +24,10 @@ class App extends Component {
       displayRide: " ",
       restaurant: "be-our-guest",
       displayRestaurant: " ",
-      // //array of objects
-      // todo_attractions: [],
-      // //array of objects
-      // todo_dining: []
     };
 
     this.handleAttractionSelect = this.handleAttractionSelect.bind(this);
     this.handleDiningSelect = this.handleDiningSelect.bind(this);
-    // this.handleAddRideClick = this.handleAddRideClick.bind(this);
-    // this.handleAddRestaurantClick = this.handleAddRestaurantClick.bind(this);
-    // this.handleRemoveClick = this.handleRemoveClick.bind(this);
-    // this.handleAddNoteClick = this.handleAddNoteClick.bind(this);
-    // this.handleEditNoteClick = this.handleEditNoteClick.bind(this);
   }
 
   /* external API requests to TouringPlans.com; the requests are for attraction and dining info at the
@@ -104,40 +95,6 @@ class App extends Component {
     })
   }
 
-  /* handler for the button element in the Button component; utilizes the state.ride property to 
-  extract the attraction name from the state.attractions array of objects*/
-  // handleAddRideClick() {
-  //   let { name } = this.state.attractions
-  //     .filter(attraction => {
-  //       return attraction.permalink === this.state.ride
-  //     })[0];
-  //   axios.post("/api/attractions", { name: name }).then((res) => {
-  //     this.setState({
-  //       todo_attractions: res.data
-  //     })
-  //   });
-  // }
-
-  /* handler for the button element in the Button component;*/
-  // handleAddRestaurantClick() {
-  //   let { name } = this.state.dining
-  //     .filter(restaurant => {
-  //       return restaurant.permalink === this.state.restaurant
-  //     })[0];
-  //   axios.post("/api/dining", { name: name }).then((res) => {
-  //     this.setState({
-  //       todo_dining: res.data
-  //     })
-  //   });
-  // }
-
-  /* handler for the button element in the Button component;*/
-  // handleRemoveClick() {
-
-  // }
-
-
-
   render() {
     // console.log("Attractions Array: ",this.state.attractions);
     // console.log("Ride: ",this.state.ride);
@@ -186,15 +143,13 @@ class App extends Component {
                 handleSelect={this.handleDiningSelect}
               />
             </div>
-            <div>
-              <List
-                title="Dining:"
-                addButtonName="Add Restaurant To Dining"
-                deleteButtonName="Remove Selected Restaurant"
-                activityName={diningName}
-              // array={this.state.todo_dining}
-              />
-            </div>
+            <List
+              title="Dining:"
+              addButtonName="Add Restaurant To Dining"
+              deleteButtonName="Remove Selected Restaurant"
+              activityName={diningName}
+            // array={this.state.todo_dining}
+            />
           </section>
           <section className="note_container">
             <div>
