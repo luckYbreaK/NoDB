@@ -37,10 +37,11 @@ class App extends Component {
     promise1.then(res => {
       this.setState({
         attractions: res.data.filter((ride, i) => {
-          return i <= 10;
+          return i <= 20;
         })
-      });
+      })
     });
+  
 
     let promise2 = axios.get("/api/dining");
     promise2.then(res => {
@@ -59,7 +60,7 @@ class App extends Component {
       });
       this.setState({
         dining: arr.filter((restaurant, i) => {
-          return i <= 10;
+          return i <= 20;
         })
       });
     });
